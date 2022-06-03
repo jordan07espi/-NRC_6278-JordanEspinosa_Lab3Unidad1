@@ -121,3 +121,38 @@ class Grafo:
         #No hay valor posible que devolver
         return None
 
+#Función Main de la clase
+if _name_ == "_main_":
+    '''
+        Main de la clase Grafo
+        Imprime los nodos nodos asignados y muestra el camino recorrido
+        
+    '''
+    # Crea una instancia de la clase "Grafo"
+    # Este grafo es no dirigido y tiene 5 nodos
+    g = Grafo(5, dirigido=False)
+    
+    # Agrega las aristas del grafo
+    # Añáde las aristas (0,1)
+    g.agregar_arista(0,1)
+    # Añáde las aristas (0,2)
+    g.agregar_arista(0,2)
+    # Añáde las aristas (1,3)
+    g.agregar_arista(1,3)
+    # Añáde las aristas (2,3)
+    g.agregar_arista(2,3)
+    # Añáde las aristas (3,4)
+    g.agregar_arista(3,4)
+    
+    # Imprime la lista de adyacencia
+    g.imprimir_lista_adyacencia()
+    
+    # lista vacía del camino del recorrido
+    camino_recorrido = []
+    # Se intancia el camino del recorrido
+    # desde el nodo 0 al nodo 3
+    camino_recorrido = g.dfs(0, 3)
+    # Imprime el camino del recorrido
+    print(f" El camino del recorrido del nodo 0 al nodo 3 es {camino_recorrido}")
+    #Imprime la documentanción
+    help(Grafo)
