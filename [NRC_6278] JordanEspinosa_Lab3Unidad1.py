@@ -74,3 +74,50 @@ class Grafo:
             #Imprime los nodos que estan en la lista de adyacencia
             print("nodo", llave, ": ", self.m_lista_adyacencia[llave])
 
+
+    # Función que imprime el recorrido DFS
+    def dfs(self, inicial, objetivo, camino = [], visitado = set()):
+        '''
+        Método que realiza un recorrido del grafo por profundidad
+                
+            Parámetros:
+            ----------
+            inicial : int 
+                    Nodo de inicio
+            objetivo : int
+                    Nodo de fin
+            visitado: list
+                    Conjunto vacío de nodos visitados
+            camino : list
+                    Lista vacia
+            Returns:
+                camino : list
+                    Lista del camino recorrido
+                resultado: list
+                    resultado del par ordenado
+        '''
+        
+        # Agrega el nodo inicial a la lista camino
+        camino.append(inicial)
+        # Agrega el nodo inicial al lista visitado
+        visitado.add(inicial)
+        # Si el inicial es igual al objetivo termina su recorrido
+        #Finaliza el programa
+        if inicial == objetivo:
+            # Retorna la lista camino
+            return camino
+        #Recorre el nodo vecino del inicio de lista de adyacencia
+        for (vecino, peso) in self.m_lista_adyacencia[inicial]:
+            #Verifica que el nodo vecino no se ha visitado
+            if vecino not in visitado:
+                #Preguntar si es igual al objetivo
+                resultado = self.dfs(vecino, objetivo, camino, visitado)
+                #Resultado no es ninguna
+                if resultado is not None:
+                    #Devuelve el par ordenado
+                    return resultado
+        # Elimina y retorna un elemento de la lista de camino
+        camino.pop()
+        #No hay valor posible que devolver
+        return None
+
